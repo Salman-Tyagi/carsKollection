@@ -13,6 +13,7 @@ import carRouter from './routes/carRoutes.js';
 import dealerRouter from './routes/dealerRoutes.js';
 import globalErrorHandler from './controller/globalErrorHandler.js';
 import AppError from './utils/appError.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config({ path: 'config.env' });
 
@@ -28,6 +29,9 @@ app.use(helmet());
 app.use(express.json({ limit: '10kb' }));
 
 app.use(mongoSanitize());
+
+// Cookir Parser
+app.use(cookieParser());
 
 app.use('/api/v1/cars', carRouter);
 app.use('/api/v1/dealer', dealerRouter);
